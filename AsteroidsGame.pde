@@ -1,5 +1,5 @@
 Spaceship Ari = new Spaceship();
-Star[] nightSky = new Star[280];
+Star[] nightSky = new Star[240];
 
 public void setup(){
   size(1290,630);
@@ -24,8 +24,8 @@ public void keyPressed(){
   if(key == 'w'){ //stops ship, moves to a different postion with a new direction
     Ari.setDirectionX(0);
     Ari.setDirectionY(0);
-    Ari.setX((int)(Math.random()*501));
-    Ari.setY((int)(Math.random()*501));
+    Ari.setX((int)(Math.random()*1291));
+    Ari.setY((int)(Math.random()*631));
     Ari.setPointDirection((int)(Math.random()*360));
   }
   if(key == 'a'){ //turn left
@@ -35,6 +35,6 @@ public void keyPressed(){
     Ari.turn(13);
   }
   if(key == 'd'){
-    Ari.accelerate(0.3);
+    Ari.accelerate(0.2);
   }
 }
