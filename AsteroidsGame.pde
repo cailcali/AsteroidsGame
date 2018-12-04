@@ -1,6 +1,6 @@
 Spaceship Ari = new Spaceship();
 Star[] nightSky = new Star[240];
-Asteroid[] nat = new Asteroid[16];
+ArrayList <Asteroid> nat = new ArrayList <Asteroid>();
 
 public void setup(){
   size(1290,630);
@@ -8,8 +8,8 @@ public void setup(){
   for(int i=0; i<nightSky.length; i++){
     nightSky[i] = new Star();
   }
-  for(int i=0; i<nat.length; i++){
-    nat[i] = new Asteroid();
+  for(int i=0; i<20; i++){
+    nat.add(new Asteroid());
   }
   Ari.setDirectionX(0);
   Ari.setDirectionY(0);
@@ -20,10 +20,13 @@ public void draw(){
   for(int i = 0; i<nightSky.length; i++){
     nightSky[i].show();
   }
-  for(int i = 0; i<nat.length; i++){
-    nat[i].show();
-    nat[i].move();
-  }
+  for(int i = 0; i<nat.size(); i++){
+    nat.get(i).show();
+    nat.get(i).move();
+    float d = dist(Ari.getX(), Ari.getY(), nat.get(i).getX(), nat.get(i).getY());
+    if(d < 15)
+      nat.remove(i);
+  }    
   Ari.show();
   Ari.move();
 }
@@ -43,6 +46,6 @@ public void keyPressed(){
     Ari.turn(13);
   }
   if(key == 'd'){
-    Ari.accelerate(0.2);
+    Ari.accelerate(0.12);
   }
 }
