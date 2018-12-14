@@ -1,18 +1,19 @@
-Spaceship Ari = new Spaceship();
+Spaceship Orianna = new Spaceship();
 Star[] nightSky = new Star[240];
-ArrayList <Asteroid> nat = new ArrayList <Asteroid>();
+ArrayList <Asteroid> Jinx = new ArrayList <Asteroid>();
+ArrayList <Bullet> Lux = new ArrayList <Bullet>();
 
 public void setup(){
   size(1290,630);
-  background(0);
+  background(65,74,76);
   for(int i=0; i<nightSky.length; i++){
     nightSky[i] = new Star();
   }
   for(int i=0; i<20; i++){
-    nat.add(new Asteroid());
+    Jinx.add(new Asteroid());
   }
-  Ari.setDirectionX(0);
-  Ari.setDirectionY(0);
+  //Orianna.setDirectionX(0);
+  //Orianna.setDirectionY(0);
 }
 
 public void draw(){
@@ -20,32 +21,46 @@ public void draw(){
   for(int i = 0; i<nightSky.length; i++){
     nightSky[i].show();
   }
-  for(int i = 0; i<nat.size(); i++){
-    nat.get(i).show();
-    nat.get(i).move();
-    float d = dist(Ari.getX(), Ari.getY(), nat.get(i).getX(), nat.get(i).getY());
+  for(int i = 0; i<Jinx.size(); i++){
+    Jinx.get(i).show();
+    Jinx.get(i).move();
+    float d = dist(Orianna.getX(), Orianna.getY(), Jinx.get(i).getX(), Jinx.get(i).getY());
     if(d < 15)
-      nat.remove(i);
+      Jinx.remove(i);
   }    
-  Ari.show();
-  Ari.move();
+  Orianna.show();
+  Orianna.move();
+  for(int i=0; i<Lux.size(); i++){
+    for(int nI=0; i<Lux.size(); i++){
+    Lux.get(i).show();
+    Lux.get(i).move();
+    float d = dist(Jinx.get(nI).getX(), Jinx.get(nI).getY(), Lux.get(i).getX(), Lux.get(i).getY());
+      if(d < 20){
+        Jinx.remove(nI);
+        Lux.remove(i);
+      }
+      break;
+    }
+  }
 }
 
 public void keyPressed(){
   if(key == 'w'){ //stops ship, moves to a different postion with a new direction
-    Ari.setDirectionX(0);
-    Ari.setDirectionY(0);
-    Ari.setX((int)(Math.random()*1291));
-    Ari.setY((int)(Math.random()*631));
-    Ari.setPointDirection((int)(Math.random()*360));
+    Orianna.setDirectionX(0);
+    Orianna.setDirectionY(0);
+    Orianna.setX((int)(Math.random()*1291));
+    Orianna.setY((int)(Math.random()*631));
+    Orianna.setPointDirection((int)(Math.random()*360));
   }
-  if(key == 'a'){ //turn left
-    Ari.turn(-13);
-  }
-  if(key == 's'){ // turn right
-    Ari.turn(13);
-  }
-  if(key == 'd'){
-    Ari.accelerate(0.12);
-  }
+  if(key == 'a') //turn left
+    Orianna.turn(-13);
+    
+  if(key == 's') // turn right
+    Orianna.turn(13);
+    
+  if(key == 'd')
+    Orianna.accelerate(0.12);
+    
+  if(key == 'f') // shoot
+    Lux.add(new Bullet(Orianna));
 }

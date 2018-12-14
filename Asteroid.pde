@@ -21,13 +21,13 @@ class Asteroid extends Floater{
     myCenterY = (int)(Math.random()*631);
     myPointDirection = Math.random()*360;
     if(Math.random() < 0.5){
-      myDirectionX = Math.random()*2.2;
-      myDirectionY = Math.random()*2.2;
+      myDirectionX = Math.random()*1.65;
+      myDirectionY = Math.random()*1.65;
     }
     else
     {
-      myDirectionX = Math.random()*-2.2;
-      myDirectionY = Math.random()*-2.2;
+      myDirectionX = Math.random()*-1.65;
+      myDirectionY = Math.random()*-1.65;
     }
 		if(Math.random() < 0.5)
 		  myRotSpeed=(int)(Math.random()*3);
