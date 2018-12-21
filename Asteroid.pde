@@ -1,20 +1,21 @@
 class Asteroid extends Floater{
-	private int myRotSpeed;
-	public Asteroid(){
-		corners = 6;
+  private int myRotSpeed, mySize;
+  public Asteroid(){
+    mySize = (int)(Math.random()*10);
+    corners = 6;
     xCorners = new int[corners];
     yCorners = new int[corners];
-    xCorners[0] = -17;
-    yCorners[0] = -14;
-    xCorners[1] = 13;
-    yCorners[1] = -14;
-    xCorners[2] = 19;
+    xCorners[0] = -13 - mySize;
+    yCorners[0] = -10 - mySize;
+    xCorners[1] = 9 + mySize;
+    yCorners[1] = -10 - mySize;
+    xCorners[2] = 15 + mySize;
     yCorners[2] = 0;
-    xCorners[3] = 12;
-    yCorners[3] = 16;
-    xCorners[4] = -17;
-    yCorners[4] = 14;
-    xCorners[5] = -11;
+    xCorners[3] = 8 + mySize;
+    yCorners[3] = 12 + mySize;
+    xCorners[4] = -13 - mySize;
+    yCorners[4] = 10 + mySize;
+    xCorners[5] = -7 - mySize;
     yCorners[5] = 0;
     myColor = color(162,168,174);
     myCenterX = (int)(Math.random()*1291);
