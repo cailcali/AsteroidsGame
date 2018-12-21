@@ -9,7 +9,7 @@ public void setup(){
   for(int i=0; i<nightSky.length; i++){
     nightSky[i] = new Star();
   }
-  for(int i=0; i<20; i++){
+  for(int i=0; i<17; i++){
     Jinx.add(new Asteroid());
   }
   //Orianna.setDirectionX(0);
@@ -31,11 +31,11 @@ public void draw(){
   Orianna.show();
   Orianna.move();
   for(int i=0; i<Lux.size(); i++){
-    for(int nI=0; i<Lux.size(); i++){
+    for(int nI=0; nI<Lux.size(); nI++){
     Lux.get(i).show();
     Lux.get(i).move();
     float d = dist(Jinx.get(nI).getX(), Jinx.get(nI).getY(), Lux.get(i).getX(), Lux.get(i).getY());
-      if(d < 20){
+      if(d < 18){
         Jinx.remove(nI);
         Lux.remove(i);
       }
@@ -52,13 +52,13 @@ public void keyPressed(){
     Orianna.setY((int)(Math.random()*631));
     Orianna.setPointDirection((int)(Math.random()*360));
   }
-  if(key == 'a') //turn left
+  if(key == 'a') // turn left
     Orianna.turn(-13);
     
   if(key == 's') // turn right
     Orianna.turn(13);
     
-  if(key == 'd')
+  if(key == 'd') // accelerate
     Orianna.accelerate(0.12);
     
   if(key == 'f') // shoot
